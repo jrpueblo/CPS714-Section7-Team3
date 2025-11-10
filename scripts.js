@@ -1,3 +1,5 @@
+
+
 // Decode Google JSON web token
 function decodeJWT(token) {
     let base64Url = token.split(".")[1];
@@ -72,3 +74,11 @@ function populateUserProfile() {
 if (document.body.classList.contains("profile-page")) {
     populateUserProfile();
 }
+
+// Initialize Supabase client
+const SUPABASE_URL = "https://mtjgmoctyzgfubkpsydg.supabase.co";
+const SUPABASE_ANON_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im10amdtb2N0eXpnZnVia3BzeWRnIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTk2Mjc5MTksImV4cCI6MjA3NTIwMzkxOX0.9Ku1_VjUhsBUtHwPSiBCYAez8sWyhK0x6Hc2SVxpqnk";
+
+const supabaseClient = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+
+console.log("Supabase object:", supabaseClient);
