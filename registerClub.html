@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Create Event — CampusConnect</title>
+  <title>Register as Club Leader — CampusConnect</title>
   <link rel="stylesheet" href="styles.css" />
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
   <script src="scripts.js" defer></script>
@@ -22,3 +22,62 @@
     </nav>
     <div id="userInfo"></div>
   </header>
+  <main>
+    <section>
+      <h2>Register as a Club Leader</h2>
+      <form id="clubLeaderForm">
+        <label for="clubName">Club Name:</label>
+        <input type="text" id="clubName" name="clubName" required />
+        <button type="submit" class="btn">Register as Club Leader</button>
+      </form>
+      <div id="clubLeaderMsg" class="small-muted" style="margin-top:1em;"></div>
+    </section>
+  </main>
+  <footer>
+    <p>&copy; 2025 CampusConnect. All rights reserved.</p>
+  </footer>
+
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function() {
+      const form = document.getElementById("clubLeaderForm");
+      const msgDiv = document.getElementById("clubLeaderMsg");
+
+      form.addEventListener("submit", async function(e) {
+        e.preventDefault();
+        msgDiv.textContent = "";
+
+        const clubName = document.getElementById("clubName").value.trim();
+        if (!clubName) {
+          msgDiv.textContent = "Please enter your club name.";
+          return;
+        }
+
+        // Update role and club in Supabase
+        try {
+            userInfo = JSON.parse(sessionStorage.getItem("userData")).email;
+            const { data, error } = await supabaseClient
+            .from("users")
+            .update({ role: "Club Leader", club: clubName})
+            .eq("email", userInfo)
+            .select()
+            .maybeSingle();
+
+          if (error) {
+            msgDiv.textContent = "Failed to register as Club Leader: " + error.message;
+            return;
+          }
+
+          sessionStorage.setItem("role", "Club Leader");
+          sessionStorage.setItem("club", clubName);
+
+          msgDiv.textContent = "You are now registered as a Club Leader" + (clubName ? (" for " + clubName) : "") + "!";
+
+        } catch (err) {
+          msgDiv.textContent = "Unexpected error: " + err.message;
+        }
+      });
+    });
+  </script>
+</body>
+</html>
