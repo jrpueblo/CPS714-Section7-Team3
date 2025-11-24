@@ -40,6 +40,21 @@
       background: #d9534f;
       color: #fff;
     }
+    
+    #main {
+      text-align: center; 
+      width: 60%;              
+      margin: 50px auto;      
+      padding: 20px;          
+      border-radius: 10px;     
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1); 
+    }
+
+    .text{
+      text-align: center;     
+      margin-bottom: 15px;     
+    }
+    
   </style>
 </head>
 
@@ -50,18 +65,18 @@
     <nav>
       <ul>
         <li><a href="events.html">My Events</a></li>
-        <li><a href="create.html" id="createEventsLink">Create Events</a></li>
         <li><a href="registerClub.html">Register as a Club Organizer!</a></li>
       </ul>
     </nav>
   </header>
 
-  <main>
-    <section>
-      <h2>Event Creation</h2>
-      <button type="button" id="openCreateEventModal" class="btn">Create New Event</button>
-    </section>
-  </main>
+  
+  <section id="main">
+    <h2>Event Creation</h2>
+    <h3 class="text">Start planning your event here – it only takes a minute.</h3>
+    <button type="button" id="openCreateEventModal" class="btn">Create New Event</button>
+  </section>
+ 
 
   <div id="createEventModal" class="modal">
     <div class="modal-content">

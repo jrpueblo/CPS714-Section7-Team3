@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Test Page</title>
+  <title>Events Page</title>
   <link rel="stylesheet" href="styles.css">
   <script src="https://accounts.google.com/gsi/client" async defer></script>
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
@@ -41,32 +41,35 @@
 
 <body>
   <header>
-    <h1>Create Event</h1>
+    <h1>CampusConnect</h1>
     <nav>
       <ul>
-        <li><a href="events.html">My Events</a></li>
         <li><a href="create.html" id="createEventsLink">Create Events</a></li>
         <li><a href="registerClub.html">Register as a Club Organizer!</a></li>
       </ul>
     </nav>
   </header>
-  <div id="events">
-      <p>Loading events...</p>
-  </div>
 
-  
-  <div id="editModal">
-    <div id="editBox">
-      <h3>Edit Event</h3>
-      <input type="text" id="editTitle" placeholder="Event Title">
-      <textarea id="editDescription" placeholder="Description"></textarea>
-      <input type="datetime-local" id="editStart">
-      <input type="datetime-local" id="editEnd">
-
-      <button id="saveEdit">Save</button>
-      <button id="cancelEdit">Cancel</button>
+  <section>
+    <h2>My Events</h2>
+    <div id="events">
+        <p>Loading events...</p>
     </div>
-  </div>
+
+    
+    <div id="editModal">
+      <div id="editBox">
+        <h3>Edit Event</h3>
+        <input type="text" id="editTitle" placeholder="Event Title">
+        <textarea id="editDescription" placeholder="Description"></textarea>
+        <input type="datetime-local" id="editStart">
+        <input type="datetime-local" id="editEnd">
+
+        <button id="saveEdit">Save</button>
+        <button id="cancelEdit">Cancel</button>
+      </div>
+    </div>
+  </section>
 
   <footer>
       <p>&copy; 2025 CampusConnect. All rights reserved.</p>
