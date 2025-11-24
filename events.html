@@ -35,6 +35,39 @@
     #editBox button {
       margin-top: 10px;
     }
+
+    #main {
+      text-align: center; 
+      width: 60%;              
+      margin: 50px auto;      
+      padding: 20px;          
+      border-radius: 10px;     
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1); 
+    }
+    .event {
+      background-color: #f9f9f9;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      padding: 12px 16px;
+      margin-bottom: 15px;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+      transition: transform 0.1s ease, box-shadow 0.1s ease;
+    }
+    
+    .event-button {
+      background-color: #2d5be3;
+      color: white;
+      padding: 8px 12px;
+      border-radius: 5px;
+      cursor: pointer;    
+      font-size: 15px;
+      margin:10px;
+    }
+
+    .event-button:hover {
+      background-color: #0056b3; 
+    }
+
   </style>
 
 </head>
@@ -50,7 +83,7 @@
     </nav>
   </header>
 
-  <section>
+  <section id="main">
     <h2>My Events</h2>
     <div id="events">
         <p>Loading events...</p>
@@ -105,14 +138,15 @@
         eventDiv.className = 'event';
         eventDiv.innerHTML = `
           <strong>${event.title}</strong><br>
-          ${event.description || ''}<br>
-          ${new Date(event.start_time).toLocaleString()} 
-          ${event.end_time ? '- ' + new Date(event.end_time).toLocaleString() : ''}
+          ${event.description || ''}<br><br>
+        <div><strong>Start Time:</strong> ${new Date(event.start_time).toLocaleString()}</div>
+        <div><strong>End Time:</strong> ${event.end_time ? new Date(event.end_time).toLocaleString() : '-'}</div>
+        <div><strong>Location: </strong>${event.location || ''}
           <br><br>
 
-          <button onclick="openEdit(${event.id})">✏️ Edit</button>
-          <button onclick="deleteEvent(${event.id})">🗑️ Delete</button>
-          <hr>
+          <button class="event-button" onclick="openEdit(${event.id})">✏️ Edit</button>
+          <button class="event-button" onclick="deleteEvent(${event.id})">🗑️ Delete</button>
+          
         `;
         container.appendChild(eventDiv);
       });
