@@ -235,6 +235,11 @@ table.users th {
   font-weight: 600;
 }
 
+nav ul li a.current {
+    font-weight: bold;
+    color: #4A90E2;
+}
+
 .btn.secondary {
   background: #f3f4f6;
   color: #111827;
