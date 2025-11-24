@@ -29,7 +29,7 @@ async function onSignIn(response) {
     try {
         const result = await checkIfUserExists(userData.email);
         let role = "Student";
-
+        
         if (result.exists) {
             role = result.data.role || "Student";
         } else {
@@ -95,6 +95,7 @@ function initializeSession() {
         document.getElementById("landingContainer")?.style?.setProperty("display", "none");
     }
 }
+
 
 // MAIN PAGE EVENTS
 window.addEventListener("DOMContentLoaded", () => {
@@ -174,6 +175,6 @@ window.addEventListener("DOMContentLoaded", () => {
 
         alert("Event created successfully!");
         modal.style.display = "none";
-        window.location.href = "index.html";
+        window.location.href = "events.html";
     });
 });
